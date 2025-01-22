@@ -32,7 +32,7 @@ const login = async (req, res) => {
       expiresIn: "7d",
     });
     const options = {
-      httpOnly: true,
+      httpOnly: false,
       secure: true,
       sameSite: "None",
       maxAge: 604800000,
