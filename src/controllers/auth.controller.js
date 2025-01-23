@@ -60,10 +60,8 @@ const logout = (req, res) => {
     httpOnly: true,
     secure: true,
   };
-  return res
-    .status(200)
-    .clearCookie("token", options)
-    .json(new ApiResponse(200, {}, "User logged Out"));
+  res.clearCookie("token", options);
+  return res.status(200).json(new ApiResponse(200, {}, "User logged Out"));
 };
 
 const ping = (req, res) => {
@@ -75,4 +73,4 @@ const ping = (req, res) => {
   }
 };
 
-export { login, logout,ping };
+export { login, logout, ping };
