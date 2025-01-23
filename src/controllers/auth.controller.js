@@ -32,7 +32,7 @@ const login = async (req, res) => {
       expiresIn: "7d",
     });
     const options = {
-      httpOnly: false,
+      httpOnly: true,
       secure: true,
       sameSite: "None",
       maxAge: 604800000,
@@ -66,4 +66,13 @@ const logout = (req, res) => {
     .json(new ApiResponse(200, {}, "User logged Out"));
 };
 
-export { login, logout };
+const ping = (req, res) => {
+  try {
+    return res.status(200).json(new ApiResponse(200, "ok"));
+  } catch (err) {
+    console.log(err.message);
+    return res.status(500).json(new ApiResponse(500, "Server Error", err));
+  }
+};
+
+export { login, logout,ping };
