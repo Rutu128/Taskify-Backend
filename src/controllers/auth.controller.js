@@ -59,8 +59,13 @@ const logout = (req, res) => {
   const options = {
     httpOnly: true,
     secure: true,
+    sameSite: "None",
+    maxAge: 0,
   };
+  console.log(res);
+
   res.clearCookie("token", options);
+
   return res.status(200).json(new ApiResponse(200, {}, "User logged Out"));
 };
 
